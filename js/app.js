@@ -42,7 +42,7 @@ function decipher(secret){
 //funcion de validacion de datos
 function validate(date) {
 
-    for(var i = 0; i < phrase.length; i++){
+    for(var i = 0; i < date.length; i++){
         if ((date.charCodeAt(i) > 64 && date.charCodeAt(i) < 91) || (date.charCodeAt(i) > 96 && date.charCodeAt(i) < 123)) //condicionamos a que solo se ingrese letras o mayusculas o minusculas pasando a ascii, una vez convertido condicionamosa que este entre el rango
             return date;
         else if(date === null)

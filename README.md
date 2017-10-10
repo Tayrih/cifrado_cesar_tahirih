@@ -21,25 +21,49 @@ En este programa usted podrá elegir la opción de desplazamiento, ingresando la
 
 
 ## Pseudocodigo
+
+    funcion cipher(secret){
+        Declarar newPhrase = ""
+        para( i <- 0; i<longitud(secret); ++){
+            convertir secret a Ascii
+            newphrase += ((secret(i)-65+33) mod 26 +65)
+        }
+        Escribir newPhrase
+      }
+
+    funcion decipher(secret){
+      Declarar newPhrase = ""
+      para( i <- 0; i<longitud(secret); ++){
+          convertir secret a Ascii
+          newphrase += ((secret(i)-65-33 + 26*2 )mod 26 +65)
+      }
+      Escribir newPhrase
+    }
+
+    funcion validate(date){
+      para( i = 0; i < longitud(date); i++){
+        si((date>64 && date < 91) || (date>96 && date < 123))
+          retornar date
+        si no
+          retornar error
+      }
+    }
+
     Cifrado cesar
-    1. Ingrese frase a cifrar
-    2. Ingrese frase a decifrar
+    1. Para cifrar
+    2. Para decifrar
     3. Salir
     Elija una opcion:
 
     Leer opcion
-
-    Convertir opcion a Ascci
-
-    si((opcion>64 && opcion < 91) || (opcion > 96 && opcion < 193))
-        cipher(opcion)
-    sino
-        Escribir ingrese una opcion valida
-
-    si((opcion>64 && opcion < 91) || (opcion > 96 && opcion < 193))
-        decipher(opcion)
-    sino
-        Escribir ingrese una opcion valida
+    declarar phrase
+    segun(opcion)
+        caso 1:
+          phrase = Escribir  Ingrese texto a cifrar
+          cipher(validate(phrase))
+        caso 2:
+          phrase = Escribir  Ingrese texto a descifrar
+          decipher(validate(phrase))
 
 
     funcion cipher(secret){
