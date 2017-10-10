@@ -9,8 +9,10 @@ function cipher(secret){
 
         if( toAscci > 64 && toAscci < 91) // formula para mayusculas
             newPhrase += String.fromCharCode((toAscci - 65 + 33) % 26 + 65);
-        else  // para minusculas
+        else if(toAscci > 96 && toAscci < 123)  // para minusculas
             newPhrase += String.fromCharCode((toAscci - 97 + 33) % 26 + 97);
+        else
+            newPhrase += String.fromCharCode(toAscci);
 
     }
 
@@ -27,9 +29,10 @@ function decipher(secret){
 
         if( toAscci > 64 && toAscci < 91) //para mayusculas
             newPhrase += String.fromCharCode((toAscci - 65 - 33 + 26*2) % 26 + 65);//26*2 porque recorre el abecedario dos veces para decifrar
-        else  //paraminusculas
+        else if(toAscci > 96 && toAscci < 123)  //paraminusculas
             newPhrase += String.fromCharCode((toAscci - 97 - 33 + 26*2) % 26 + 97);
-
+        else
+            newPhrase += String.fromCharCode(toAscci);
     }
 
     return newPhrase;
@@ -51,6 +54,10 @@ function validate(date) {
 
 }
 
+
+/*
+
+
 var phrase = prompt ('Ingrese un texto a cifrar');
 document.write(cipher(validate(phrase)) + '\n\n');
 
@@ -58,27 +65,24 @@ document.write(cipher(validate(phrase)) + '\n\n');
 var phrase = prompt ('Ingrese un texto a descifrar');
 document.write(decipher(validate(phrase)));
 
+*/
 
-/*
-
-var menu = prompt ('MENU PRINCIPAL CIFRADO CESAR \n\n' + '1- Ingrese frase para cifrar  \n\n ' + '2.- Ingrese frase para decifrar  \n\n' + '3.- Salir');
+// menu principal
+var menu = prompt ('MENU PRINCIPAL CIFRADO CESAR \n\n' + '1- Para cifrar frases  \n\n ' + '2.- Para decifrar frases  \n\n' + '3.- Salir');
 var phrase;
 switch (menu) {
-    case 1:
+    case "1":
+      phrase = prompt ('Ingrese un texto a cifrar');
+      document.write('<p>El texto cifrado es: \n\n </p> ' + cipher(validate(phrase))); // la frase ingresada primero es validada y luego pasa a la funcion cipher
+      break;
+    case "2":
       phrase = prompt ('Ingrese un texto a descifrar');
-      document.write(cipher(validate(phrase)));
+      document.write('<p>El texto descifrado es: \n\n </p> ' + decipher(validate(phrase))); // la frase ingresada primero es validada y luego pasa a la funcion decipher
       break;
-    case 2:
-      document.write(cipher(validate(phrase)));
-      break;
-    case 3:
+    case "3":
       document.write('Gracias');
       break;
     default:
       alert('Vuelva a realizar el proceso, recuerde ingresar un numero valido de la lista');
 
 }
-
-
-var phrase = prompt ('Ingrese un texto a descifrar');
-document.write(decipher(phrase)); */
