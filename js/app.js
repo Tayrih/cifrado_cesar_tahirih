@@ -36,38 +36,49 @@ function decipher(secret){
 
 }
 
+//funcion de validacion de datos
+function validate(date) {
 
+    for(var i = 0; i < phrase.length; i++){
+        if ((date.charCodeAt(i) > 64 && date.charCodeAt(i) < 91) || (date.charCodeAt(i) > 96 && date.charCodeAt(i) < 123)) //condicionamos a que solo se ingrese letras o mayusculas o minusculas pasando a ascii, una vez convertido condicionamosa que este entre el rango
+            return date;
+        else if(date === null)
+            return document.write("[ERROR]");
+        else
+            return document.write("[ERROR]");
 
+    }
+
+}
 
 var phrase = prompt ('Ingrese un texto a cifrar');
-document.write(cipher(phrase));
+document.write(cipher(validate(phrase)) + '\n\n');
 
 
 var phrase = prompt ('Ingrese un texto a descifrar');
-document.write(decipher(phrase));
+document.write(decipher(validate(phrase)));
 
 
-
-//validacion para cifrar solo que escribe tres veces ingrese texto cuando no se ingresa un valor correcto
 /*
-for(var i = 0; i < phrase.length; i++){
-    if((phrase.charCodeAt(i) > 64 && phrase.charCodeAt(i) < 91) || (phrase.charCodeAt(i) > 96 && phrase.charCodeAt(i) < 123))
-        document.write(cipher(phrase));
-    else
-        document.write("Ingrese solo texto");
+
+var menu = prompt ('MENU PRINCIPAL CIFRADO CESAR \n\n' + '1- Ingrese frase para cifrar  \n\n ' + '2.- Ingrese frase para decifrar  \n\n' + '3.- Salir');
+var phrase;
+switch (menu) {
+    case 1:
+      phrase = prompt ('Ingrese un texto a descifrar');
+      document.write(cipher(validate(phrase)));
+      break;
+    case 2:
+      document.write(cipher(validate(phrase)));
+      break;
+    case 3:
+      document.write('Gracias');
+      break;
+    default:
+      alert('Vuelva a realizar el proceso, recuerde ingresar un numero valido de la lista');
 
 }
 
 
-/*
-//validacion para decifrar
-var phrase = prompt('Ingrese un texto cifrado');
-
-for(var i = 0; i < phrase.length; i++){
-
-    if((phrase.charCodeAt(i) > 64 && phrase.charCodeAt(i) < 91) || (phrase.charCodeAt(i) > 96 && phrase.charCodeAt(i) < 123))
-        document.write(decipher(phrase));
-    else {
-        document.write("Ingrese solo texto");
-    }
-} */
+var phrase = prompt ('Ingrese un texto a descifrar');
+document.write(decipher(phrase)); */
